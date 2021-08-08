@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1 id="TeenyTitle">TeenyURL</h1>
+    <p id="TeenySubtitle" class="lead">A URL Shortener written in C# .NET</p>
+    <div id="TeenyURLBox_FormGroup" class="form-group">
+        <label id="TeenyURLBox_Label" for="TeenyURLBox">Your Long URL:</label>
+        <input type="text" class="form-control" id="TeenyURLBox">
+        <button id="TeenyButton" type="button" class="btn btn-primary">Make it Teeny</button>
+    </div>
+    <div id="TeenyURLBox_ResultFormGroup" class="form-group">
+        <label id="TeenyURLBox_Label" for="TeenyURLResultBox">Your Teeny URL:</label>
+        <input type="text" class="form-control" id="TeenyURLResultBox" readonly>
+    </div>
+</div>
+
+<script>
+    $('#TeenyButton').on('click', function (event) {
+        var requestedURL = $('#TeenyURLBox').val();
+        if (requestedURL) {
+            $.ajax({
+                url: '@Url.Action("Create", "Home")',
+                dataType: 'json',
+                type: 'POST',
+                cache: true,
+                async: true,
+                data: { URL: requestedURL },
+                success: function (result) {
+                    //print in "result" box.
+                    console.log(result);
+                    if (result && result.url) {
+                        $('#TeenyURLResultBox').val(result.url);
+                        $('#TeenyURLBox_ResultFormGroup').show();
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.log(error);
+                }
+            });
+        }
+        else {
+            console.log("Enter a URL");
+        }
+    });
+</script>
