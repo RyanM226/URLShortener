@@ -46,15 +46,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CacheManager\CacheManager\CacheManager.csproj">
-      <Project>{248e2791-f1c6-4748-8619-ad1a1cee6fe9}</Project>
-      <Name>CacheManager</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\DataAccess\EntityFramework\EntityFramework\DAL.csproj">
       <Project>{1F44D518-96C7-4E71-8E69-F9040F3240F3}</Project>
       <Name>DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\UrlProcessor\URLProcessor\IDEncoder.csproj">
+    <ProjectReference Include="..\CacheManager\CacheManager\CacheManager.csproj">
+      <Project>{248e2791-f1c6-4748-8619-ad1a1cee6fe9}</Project>
+      <Name>CacheManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UrlProcessor\URLProcessor\IDEncoder.csproj">
       <Project>{71672d5d-99bf-4d2a-b0c3-d7970f1430a5}</Project>
       <Name>IDEncoder</Name>
     </ProjectReference>

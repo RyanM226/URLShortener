@@ -71,21 +71,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Business\CacheManager\CacheManager\CacheManager.csproj">
+      <Project>{248e2791-f1c6-4748-8619-ad1a1cee6fe9}</Project>
+      <Name>CacheManager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Business\URLManager\URLManager.csproj">
       <Project>{7b1d144a-4192-4e8c-bbf7-de99ab8c8a58}</Project>
       <Name>URLManager</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CacheManager\CacheManager\CacheManager.csproj">
-      <Project>{248e2791-f1c6-4748-8619-ad1a1cee6fe9}</Project>
-      <Name>CacheManager</Name>
+    <ProjectReference Include="..\..\Business\UrlProcessor\URLProcessor\IDEncoder.csproj">
+      <Project>{71672d5d-99bf-4d2a-b0c3-d7970f1430a5}</Project>
+      <Name>IDEncoder</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\DataAccess\EntityFramework\EntityFramework\DAL.csproj">
       <Project>{1f44d518-96c7-4e71-8e69-f9040f3240f3}</Project>
       <Name>DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\UrlProcessor\URLProcessor\IDEncoder.csproj">
-      <Project>{71672d5d-99bf-4d2a-b0c3-d7970f1430a5}</Project>
-      <Name>IDEncoder</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
