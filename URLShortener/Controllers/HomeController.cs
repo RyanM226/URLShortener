@@ -40,9 +40,14 @@ namespace URLShortener.Controllers
             }
 
             string longURL = URLManager.Instance.GetExistingShortenedURL(URL);
+
             if(!string.IsNullOrWhiteSpace(longURL))
             {
-                return new RedirectResult($"//{longURL}", true);
+                if (!longURL.StartsWith("http://") && (!longURL.StartsWith("https://")))
+                {
+                    longURL = "http://" + longURL;
+                }
+                return new RedirectResult($"{longURL}", true);
             }
             else
             {

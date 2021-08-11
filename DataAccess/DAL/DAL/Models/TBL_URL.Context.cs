@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DAL.Models
+namespace DataAccessLayer.Models
 {
     using System;
     using System.Data.Entity;

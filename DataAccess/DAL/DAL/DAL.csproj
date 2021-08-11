@@ -4,14 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7B1D144A-4192-4E8C-BBF7-DE99AB8C8A58}</ProjectGuid>
+    <ProjectGuid>{77834622-32C8-4407-8914-06F53B724781}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BL</RootNamespace>
-    <AssemblyName>URLManager</AssemblyName>
+    <RootNamespace>DataAccessLayer</RootNamespace>
+    <AssemblyName>DAL</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,7 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,23 +50,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ShortURLBuilder.cs" />
-    <Compile Include="URLManager.cs" />
+    <Compile Include="DBHandler.cs" />
+    <Compile Include="Models\TBL_URL.Context.cs" />
+    <Compile Include="Models\TBL_URL.cs">
+      <DependentUpon>TBL_URL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBL_URL.Designer.cs">
+      <DependentUpon>TBL_URL.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DataAccess\DAL\DAL\DAL.csproj">
-      <Project>{77834622-32C8-4407-8914-06F53B724781}</Project>
-      <Name>DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CacheManager\CacheManager\CacheManager.csproj">
-      <Project>{248e2791-f1c6-4748-8619-ad1a1cee6fe9}</Project>
-      <Name>CacheManager</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UrlProcessor\URLProcessor\IDEncoder.csproj">
-      <Project>{71672d5d-99bf-4d2a-b0c3-d7970f1430a5}</Project>
-      <Name>IDEncoder</Name>
-    </ProjectReference>
+    <Content Include="Models\TBL_URL.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TBL_URL.Context1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\TBL_URL.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TBL_URL2.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\Create.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\TBL_URL.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TBL_URL1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\TBL_URL.edmx.diagram">
+      <DependentUpon>TBL_URL.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

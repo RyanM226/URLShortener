@@ -1,13 +1,9 @@
 ﻿using BL;
-using DAL.Models;
 using DataAccessLayer;
+using DataAccessLayer.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace URLManagerTests
 {
@@ -41,10 +37,13 @@ namespace URLManagerTests
                 obj.ID = i;
                 resultList.Add(obj);
             }
+
             var mockObj = new Mock<DBHandler>();
             mockObj.Setup(x => x.Insert(It.IsAny<TBL_URL>())).Returns(() => 1);
             mockObj.Setup(x => x.GetUsingLongURL(It.IsAny<string>())).Returns(() => null);
+
             URLManager.Instance._dbHandler = mockObj.Object;
+
             var shortURL = URLManager.Instance.CreateShortenedURL("MyBaseURL", "www.google.com");
             Assert.AreEqual("MyBaseURL/b", shortURL);
         }

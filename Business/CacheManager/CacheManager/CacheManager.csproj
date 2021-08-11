@@ -46,8 +46,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\DataAccess\EntityFramework\EntityFramework\DAL.csproj">
-      <Project>{1F44D518-96C7-4E71-8E69-F9040F3240F3}</Project>
+    <ProjectReference Include="..\..\..\DataAccess\DAL\DAL\DAL.csproj">
+      <Project>{77834622-32c8-4407-8914-06f53b724781}</Project>
       <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>

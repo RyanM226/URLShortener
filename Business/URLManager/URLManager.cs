@@ -1,11 +1,8 @@
-﻿using DAL.Models;
-using DataAccessLayer;
+﻿using DataAccessLayer;
+using DataAccessLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BL
 {
@@ -85,16 +82,19 @@ namespace BL
                     if (dbRow == null)
                     {
                         dbRow = dBHandler.GetUsingRowID(rowID);
-                        CacheMgr.Instance.SetInCache(dbRow);
+                        if(dbRow != null)
+                        {
+                            CacheMgr.Instance.SetInCache(dbRow);
+                        }                        
                     }
-                    return dbRow.LONG_URL;
+                    return dbRow?.LONG_URL ?? null;
                 }
             }
             catch(Exception ex)
             {
                 Debug.WriteLine(ex);
             }
-            return String.Empty;
+            return null;
         }
 
         /// <summary>
